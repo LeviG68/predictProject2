@@ -5,7 +5,8 @@ const app = express();
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
+  console.log('PRODUCTION! ', path.join(__dirname + "/client/build"));
+  app.use(express.static(path.join(__dirname + "/client/build")));
 }
 
 // app.get("/api/user", (req, res) => {
