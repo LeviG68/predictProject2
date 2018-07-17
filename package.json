@@ -7,6 +7,7 @@
     "server": "node server.js",
     "client": "cd client && npm run start",
     "start": "./node_modules/.bin/concurrently \"NODE_ENV=production ./node_modules/.bin/nodemon server.js\"",
+    "dev": "./node_modules/.bin/concurrently \"NODE_ENV=dev ./node_modules/.bin/nodemon\" \"npm run client\"",
     "build": "cd client && npm run build",
     "deploy": "yarn build && git add . && git commit -m \"Building for production\" && git push heroku master",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,6 +19,9 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "express": "^4.15.4"
+    "@google/maps": "^0.5.4",
+    "busy-hours": "0.0.5",
+    "express": "^4.16.3",
+    "google-maps": "^3.3.0"
   }
 }
