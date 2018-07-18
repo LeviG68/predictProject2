@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Denver Zoo",
+    "address": "2300 Steele St, Denver, CO 80205",
+    "website":"https://www.denverzoo.org/",
+    "image":"https://ak2.jogurucdn.com/media/image/p25/place-2015-02-19-6-Denverzoode8b09d565fa9fda8b1e374f0d66d001.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Denver Aquarium",
+    "address": "700 Water St, Denver, CO 80211",
+    "website":"http://www.aquariumrestaurants.com/downtownaquariumdenver/default.asp",
+    "image":"http://www.aquariumrestaurants.com/downtownAquariumDenver/images/slides/home/01.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Denver Museum of Nature and Science",
+    "address": "2001 Colorado Blvd, Denver, CO 80205",
+    "website":"https://www.dmns.org/",
+    "image":"https://travel.usnews.com/static-travel/images/destinations/11/denver_museum_of_nature_and_science.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Denver Childrens Museum",
+    "address": "2121 Children's Museum Dr, Denver, CO 80211",
+    "website":"https://www.mychildsmuseum.org/",
+    "image":"https://res.cloudinary.com/simpleview/image/fetch/f_auto,q_75/https://res.cloudinary.com/simpleview/image/upload/crm/denver/20160312_exhibits_1660_fe388fd3-acaf-1f01-0b070eeeb55c551d.jpg"
+  }
+]
