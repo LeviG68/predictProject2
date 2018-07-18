@@ -13,7 +13,8 @@ class Location extends React.Component {
         <div className = "address">
           <span>{this.props.address}</span>
         </div>
-        <a href={this.props.website} className="website"/>
+        <a href={this.props.website} className="website">           Visit Site
+        </a>
         <div className = "graph">
           <span>{this.props.graph}</span>
         </div>

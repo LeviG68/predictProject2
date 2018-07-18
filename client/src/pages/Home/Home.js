@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
 import Location from "../../components/Location";
+import Graph from "../../components/Graph";
 import { Col, Row, Container } from "../../components/Grid";
 import locations from "../../locations.json";
 
