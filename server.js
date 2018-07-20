@@ -6,6 +6,8 @@ const passport = require('passport');
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const mysql = require('mysql');
+var LocalStrategy = require("passport-local").Strategy;
 
 // requiring Body-parser for, parse incoming request bodies in a middleware before your handlers
 var bodyParser = require("body-parser");
