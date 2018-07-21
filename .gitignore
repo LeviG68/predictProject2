@@ -2,3 +2,4 @@
 
 # production
 client/build
+.DS_Store
