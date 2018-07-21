@@ -6,6 +6,7 @@ const passport = require('passport');
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+// const routes = require("./routes");
 
 // requiring Body-parser for, parse incoming request bodies in a middleware before your handlers
 var bodyParser = require("body-parser");
@@ -173,8 +174,11 @@ app.get("/all", function(req, res) {
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   console.log('PRODUCTION! ', path.join(__dirname + "/client/build"));
-  app.use(express.static(path.join(__dirname + "/client/build")));
+  // app.use(express.static(path.join(__dirname + "/client/build")));
+  app.use(express.static("client/build"));
 }
+
+// app.use(routes);
 
 // app.get("/api/user", (req, res) => {
 //   res.status(200).json({username: "ME"});
@@ -185,7 +189,7 @@ if (process.env.NODE_ENV === "production") {
 
 
 app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/public/index.html"));  
 });
 
 app.get("/all", function(req, res) {
