@@ -2,4 +2,7 @@
 
 # production
 client/build
+
 .env
+
+.DS_Store

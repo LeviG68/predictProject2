@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS predict_db;
+CREATE DATABASE predict_db;

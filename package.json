@@ -4,12 +4,11 @@
   "description": "Mern Demo",
   "main": "server.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start": "./node_modules/.bin/concurrently \"NODE_ENV=production ./node_modules/.bin/nodemon server.js\"",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
-    "install": "cd client && yarn install",
+    "dev": "./node_modules/.bin/concurrently \"NODE_ENV=dev ./node_modules/.bin/nodemon\" \"npm run client\"",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
@@ -20,6 +19,17 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "express": "^4.15.4"
+    "@google/maps": "^0.5.4",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "busy-hours": "0.0.5",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "google-maps": "^3.3.0",
+    "morgan": "^1.9.0",
+    "mysql2": "^1.5.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^4.38.0"
   }
 }
