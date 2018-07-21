@@ -13,6 +13,11 @@ module.exports = function(app) {
     res.json("/members");
   });
 
+  // Test route
+  app.get("/", function(req, res) {
+    res.send('it worked');
+  })
+
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error

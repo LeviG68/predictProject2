@@ -6,8 +6,6 @@ const passport = require('passport');
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
-const mysql = require('mysql');
-var LocalStrategy = require("passport-local").Strategy;
 
 // requiring Body-parser for, parse incoming request bodies in a middleware before your handlers
 var bodyParser = require("body-parser");
@@ -38,11 +36,11 @@ app.use(passport.session());
 // require("./routes/api-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
-  });
-});
+// db.sequelize.sync().then(function() {
+//   app.listen(PORT, function() {
+//     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+//   });
+// });
 
 // -------------------------------Google map node module----------------------------------------------------
 
@@ -116,13 +114,15 @@ const busy_hours = require('busy-hours');
 
 const nature_id = 'ChIJI3SnU1F5bIcREWJ08vMIP80';
 
-busy_hours(nature_id, key).then(data => {
-  console.log(data);
-  console.log(data.week[0].hours);
-  const today = new Date();
-  const day = today.getDay();
-  console.log(day);
-  console.log(data.week[day].hours.map(x => x.percentage));
+// busy_hours(nature_id, key).then(data => {
+//   console.log(data);
+//   console.log(data.week[0].hours);
+//   const today = new Date();
+//   const day = today.getDay();
+//   console.log(day);
+//   console.log(data.week[day].hours.map(x => x.percentage));
+
+
   // const formattedDataNature = [];
   // data.week.forEach((day) => {
   //   const formattedHourNature = {
@@ -134,7 +134,7 @@ busy_hours(nature_id, key).then(data => {
   //   formattedDataNature.push(formattedHourNature);
   // })
   //   console.log(formattedDataNature);
- });
+//  });
 
 //  ============================================API's==========================================================
 
@@ -193,6 +193,12 @@ app.get("/all", function(req, res) {
   res.send("It works");
 });
 
-app.listen(PORT, function() {
-  console.log(`🌎 ==> Server now on port ${PORT}!`);
+
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+  });
 });
+// app.listen(PORT, function() {
+//   console.log(`🌎 ==> Server now on port ${PORT}!`);
+// });
