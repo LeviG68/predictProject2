@@ -2,5 +2,9 @@
 
 # production
 client/build
+
+.env
+
 .DS_Store
 # client/build
+env.js

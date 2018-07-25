@@ -6,6 +6,10 @@ const passport = require('passport');
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+var cookie = require('cookie-parse');
+const routes = require('./routes');
+require('dotenv').config();
+
 // const routes = require("./routes");
 
 // requiring Body-parser for, parse incoming request bodies in a middleware before your handlers
@@ -15,7 +19,7 @@ var logger = require("morgan");
 // Requiring Axios for scraping our site, it is a Promised based HTTP client for the brouser and node.js. it makes HTTP requests from node.js, intercepts req, and response, transform req, res data and automatic transforms for JSON data.
 var axios = require("axios");
 
-var Sequelize = require('sequelize');
+var sequelize = require('sequelize');
 
 // ..................................Passport..................................................................
 // Setting up port and requiring models for syncing
@@ -27,25 +31,31 @@ var db = require("./models");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
+
+
+//Middleware-------------------------------------------------------
+app.use(bodyParser.text());
+
 // We need to use sessions to keep track of our user's login status
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Requiring our routes
-// require("./routes/html-routes.js")(app);
-// require("./routes/api-routes.js")(app);
+//flash is used to show a message on an incorrect login
+// app.use(flash());
 
-// Syncing our database and logging a message to the user upon success
-// db.sequelize.sync().then(function() {
-//   app.listen(PORT, function() {
-//     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
-//   });
-// });
+require('./app/routes/auth.js')(app,passport);
+//load passport strategies
+require('./app/config/passport/passport.js')(passport,db.login);
+app.use(routes);
+
+// Requiring our routes
+require('./routes/react-routes.js')(app);
+
 
 // -------------------------------Google map node module----------------------------------------------------
 
-  const key = 'AIzaSyDKiXuXaIyn46Yx1e4qjaMfOk1Dg1voNZs';
+  
 
 const busy_hours = require('busy-hours');
  
@@ -147,9 +157,7 @@ app.post('/api/login', passport.authenticate(''), (req, res) => {
 
 app.get("/all", function(req, res) {
 
-  res.send("It works");
-  // db.location.find({})
-  // .then(function(dblogin) {
+  
   //   // If we were able to successfully find Articles, send them back to the client
   //   res.json(dblogin);
   // })
