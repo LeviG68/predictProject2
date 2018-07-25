@@ -7,6 +7,10 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 var cookie = require('cookie-parse');
+const routes = require('./routes');
+require('dotenv').config();
+
+// const routes = require("./routes");
 
 // requiring Body-parser for, parse incoming request bodies in a middleware before your handlers
 var bodyParser = require("body-parser");
@@ -43,13 +47,15 @@ app.use(passport.session());
 require('./app/routes/auth.js')(app,passport);
 //load passport strategies
 require('./app/config/passport/passport.js')(passport,db.login);
+app.use(routes);
+
 // Requiring our routes
 require('./routes/react-routes.js')(app);
 
 
 // -------------------------------Google map node module----------------------------------------------------
 
-  const key = 'AIzaSyDKiXuXaIyn46Yx1e4qjaMfOk1Dg1voNZs';
+  
 
 const busy_hours = require('busy-hours');
  
