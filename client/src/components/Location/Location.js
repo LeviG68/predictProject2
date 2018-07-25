@@ -1,4 +1,5 @@
 import React from "react";
+import C3Chart from 'react-c3js';
 
 class Location extends React.Component {
   render() {
@@ -15,9 +16,6 @@ class Location extends React.Component {
         </div>
         <a href={this.props.website} className="website" target="_blank">Visit Site
         </a>
-        <div className = "graph">
-          <span>{this.props.graph}</span>
-        </div>
       </div>
     );
   }
